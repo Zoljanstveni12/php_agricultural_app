@@ -1,0 +1,49 @@
+﻿CREATE DATABASE `AgrotehnickeMere` CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table `AgrotehnickeMere`.`Usevi`
+(
+   ID int not null primary key AUTO_INCREMENT,
+   Naziv varchar(30) not null,
+   Lokacija varchar(30) not null,
+   Tip varchar(30) not null,
+   Povrsina varchar(20) not null,
+   IDMere int not null
+);
+
+create table `AgrotehnickeMere`.`Mere`
+(
+   IDMere int not null primary key AUTO_INCREMENT,
+   NazivMere varchar(30) not null,
+   brojMere int not null
+ 
+);
+
+
+alter table `AgrotehnickeMere`.`Usevi` add constraint FK_PRIPADA foreign key (IDMere) references `AgrotehnickeMere`.`Mere`(IDMere) on delete restrict on update cascade;
+
+
+
+
+
+create table `AgrotehnickeMere`.`KORISNIK`
+(
+   IDKORISNIKA          int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   PREZIME              varchar(50) not null,
+   IME                  varchar(40) not null,
+   EMAIL                varchar(60) not null,
+   KORISNICKOIME        varchar(30) not null,
+   SIFRA                varchar(30) not null,
+   URLSLike		         varchar(250) null,
+   statusucesca		   varchar(30) not null
+);
+
+
+
+INSERT INTO `AgrotehnickeMere`.`KORISNIK` (PREZIME, IME, EMAIL, KORISNICKOIME, SIFRA, URLSLIKE, STATUSUCESCA) VALUES ('Vujić','Filip', 'filipvujic@gmail.com', 'vfilip', 'vf', 'Filip.jpg', 'admin');
+
+
+
+INSERT INTO `AgrotehnickeMere`.`Mere` (NazivMere, brojMere) VALUES ('Zalivanje',0);
+INSERT INTO `AgrotehnickeMere`.`Mere` (NazivMere, brojMere) VALUES ('Prskanje',0);
+INSERT INTO `AgrotehnickeMere`.`Mere` (NazivMere, brojMere) VALUES ('Orezivanje',0);
+INSERT INTO `AgrotehnickeMere`.`Mere` (NazivMere, brojMere) VALUES ('Djubrenje',0);

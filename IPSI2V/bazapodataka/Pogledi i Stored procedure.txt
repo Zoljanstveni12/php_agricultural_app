@@ -1,0 +1,13 @@
+CREATE VIEW `AgrotehnickeMere`.`SviPodaciUseva` AS select `Usevi`.`ID`, `Usevi`.`Naziv`, `Usevi`.`Lokacija`,`Usevi`.`Tip`, `Usevi`.`Povrsina`,`Mere`.`NazivMere` from `AgrotehnickeMere`.`Usevi` INNER JOIN `AgrotehnickeMere`.`Mere` ON `AgrotehnickeMere`.`Usevi`.`IDMere`=`AgrotehnickeMere`.`Mere`.`IDMere`
+
+
+USE `AgrotehnickeMere`;
+DROP procedure IF EXISTS `DodajUsev`;
+DELIMITER $$
+USE `AgrotehnickeMere`$$
+CREATE PROCEDURE `DodajUsev` (IN inIDMere int, IN inNaziv varchar(30), IN inLokacija varchar(30), IN inTip varchar(30), IN inPovrsina varchar(20))
+BEGIN
+INSERT INTO `Usevi` (`IDMere`,`Naziv`, `Lokacija`, `Tip`,`Povrsina`) VALUES (inIDMere,inNaziv, inLokacija, inTip, inPovrsina);
+END
+$$
+DELIMITER ;
